@@ -68,6 +68,7 @@ Enviar mensaje:
 
 ## Super Admin
 
+- `POST /super-admin/auth/login`
 - `GET /super-admin/tenants`
 - `POST /super-admin/tenants`
 - `PATCH /super-admin/tenants/{tenant}`

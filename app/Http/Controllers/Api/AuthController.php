@@ -100,6 +100,33 @@ class AuthController extends Controller
         ], 201);
     }
 
+    public function superAdminLogin(Request $request): JsonResponse
+    {
+        $data = $request->validate([
+            'email' => ['required', 'email', 'max:255'],
+            'password' => ['required', 'string', 'max:255'],
+        ]);
+
+        $profile = Profile::query()
+            ->where('email', $data['email'])
+            ->where('role', UserRole::SuperAdmin->value)
+            ->first();
+
+        if (! $profile || ! $profile->password || ! Hash::check($data['password'], $profile->password)) {
+            throw ValidationException::withMessages(['email' => 'Credenciales de super admin invalidas.']);
+        }
+
+        if ($profile->status !== UserStatus::Approved->value) {
+            abort(403, 'El super admin no esta aprobado.');
+        }
+
+        return response()->json([
+            'ok' => true,
+            'token' => $profile->createToken('lotox-super-admin')->plainTextToken,
+            'profile' => $profile,
+        ]);
+    }
+
     private function tenantPayload(Tenant $tenant): array
     {
         return [
@@ -113,4 +140,3 @@ class AuthController extends Controller
         ];
     }
 }
-
