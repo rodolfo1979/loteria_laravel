@@ -46,6 +46,13 @@ SANCTUM_STATEFUL_DOMAINS=localhost,localhost:5173,lotox.vercel.app
 SESSION_DOMAIN=localhost
 ```
 
+Credenciales demo locales despues de ejecutar `php artisan db:seed`:
+
+- Super admin: `superadmin@lotox.local` / `SuperAdmin123`
+- Admin tenant demo: `admin@demo.local` / `AdminDemo123`
+- Cliente demo: `cliente@demo.local` / `ClienteDemo123`
+- Tenant header: `x-lotox-tenant: demo`
+
 ## Modulos incluidos
 
 - Multitenant por `tenant_slug`.
