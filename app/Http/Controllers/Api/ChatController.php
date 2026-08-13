@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Api;
 
 use App\Enums\UserRole;
 use App\Http\Controllers\Controller;
+use App\Models\AdminChatClear;
 use App\Models\Chat;
 use App\Models\ChatMember;
 use App\Models\Profile;
+use App\Services\RoleGate;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -84,5 +86,35 @@ class ChatController extends Controller
 
         return response()->json(['ok' => true, 'chat' => $chat], 201);
     }
-}
 
+    public function clear(Request $request, Chat $chat, RoleGate $gate): JsonResponse
+    {
+        $gate->requireAdmin($request->user());
+        $tenant = $request->attributes->get('tenant');
+
+        abort_if($chat->tenant_id !== $tenant->id, 404);
+
+        $clear = AdminChatClear::query()->updateOrCreate(
+            [
+                'tenant_id' => $tenant->id,
+                'chat_id' => $chat->id,
+                'admin_id' => $request->user()->id,
+            ],
+            ['cleared_at' => now()]
+        );
+
+        return response()->json(['ok' => true, 'clear' => $clear]);
+    }
+
+    public function destroy(Request $request, Chat $chat, RoleGate $gate): JsonResponse
+    {
+        $gate->requireAdmin($request->user());
+        $tenant = $request->attributes->get('tenant');
+
+        abort_if($chat->tenant_id !== $tenant->id, 404);
+
+        $chat->delete();
+
+        return response()->json(['ok' => true]);
+    }
+}

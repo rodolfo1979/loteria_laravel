@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\BootstrapController;
+use App\Http\Controllers\Api\AnnouncementController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ChatController;
 use App\Http\Controllers\Api\AdminAnnouncementController;
@@ -29,9 +30,14 @@ Route::prefix('v1')->group(function () {
 
         Route::middleware('auth:sanctum')->group(function () {
             Route::get('/me', fn () => response()->json(['ok' => true, 'profile' => request()->user()]));
+            Route::get('/announcements', [AnnouncementController::class, 'index']);
             Route::get('/chats', [ChatController::class, 'index']);
             Route::post('/chats', [ChatController::class, 'store']);
+            Route::post('/chats/{chat}/clear', [ChatController::class, 'clear']);
+            Route::delete('/chats/{chat}', [ChatController::class, 'destroy']);
             Route::post('/messages', [MessageController::class, 'store']);
+            Route::post('/messages/mark-read', [MessageController::class, 'markRead']);
+            Route::delete('/messages/{message}', [MessageController::class, 'destroy']);
 
             Route::get('/admin/users', [AdminUserController::class, 'index']);
             Route::post('/admin/users', [AdminUserController::class, 'store']);
@@ -41,7 +47,9 @@ Route::prefix('v1')->group(function () {
             Route::post('/admin/announcements', [AdminAnnouncementController::class, 'store']);
             Route::get('/admin/library', [AdminLibraryController::class, 'index']);
             Route::post('/admin/library/quick-replies', [AdminLibraryController::class, 'storeQuickReply']);
+            Route::delete('/admin/library/quick-replies/{quickReply}', [AdminLibraryController::class, 'destroyQuickReply']);
             Route::post('/admin/library/media', [AdminLibraryController::class, 'storeMedia']);
+            Route::delete('/admin/library/media/{media}', [AdminLibraryController::class, 'destroyMedia']);
             Route::get('/admin/lotteries', [AdminLotteryController::class, 'index']);
             Route::post('/admin/lotteries', [AdminLotteryController::class, 'store']);
             Route::patch('/admin/lotteries/{lottery}', [AdminLotteryController::class, 'update']);

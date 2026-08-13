@@ -41,8 +41,11 @@ Registro:
 - `GET /me`
 - `GET /chats`
 - `POST /chats`
+- `POST /chats/{chat}/clear`
+- `DELETE /chats/{chat}`
 - `POST /messages`
 - `POST /messages/mark-read`
+- `DELETE /messages/{message}`
 - `GET /announcements`
 
 Enviar mensaje:
@@ -62,7 +65,10 @@ Enviar mensaje:
 - `PATCH /admin/users/{user}`
 - `DELETE /admin/users/{user}`
 - `GET /admin/library`
-- `POST /admin/library`
+- `POST /admin/library/quick-replies`
+- `DELETE /admin/library/quick-replies/{quickReply}`
+- `POST /admin/library/media`
+- `DELETE /admin/library/media/{media}`
 - `GET /admin/announcements`
 - `POST /admin/announcements`
 - `GET /admin/lotteries`

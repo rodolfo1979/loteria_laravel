@@ -68,5 +68,28 @@ class AdminLibraryController extends Controller
 
         return response()->json(['ok' => true, 'media' => $media], 201);
     }
-}
 
+    public function destroyQuickReply(Request $request, QuickReply $quickReply, RoleGate $gate): JsonResponse
+    {
+        $gate->requireAdmin($request->user());
+        $tenant = $request->attributes->get('tenant');
+
+        abort_if($quickReply->tenant_id !== $tenant->id, 404);
+
+        $quickReply->delete();
+
+        return response()->json(['ok' => true]);
+    }
+
+    public function destroyMedia(Request $request, MediaLibrary $media, RoleGate $gate): JsonResponse
+    {
+        $gate->requireAdmin($request->user());
+        $tenant = $request->attributes->get('tenant');
+
+        abort_if($media->tenant_id !== $tenant->id, 404);
+
+        $media->delete();
+
+        return response()->json(['ok' => true]);
+    }
+}
