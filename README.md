@@ -53,6 +53,14 @@ Credenciales demo locales despues de ejecutar `php artisan db:seed`:
 - Cliente demo: `cliente@demo.local` / `ClienteDemo123`
 - Tenant header: `x-lotox-tenant: demo`
 
+Si aparece `no such table: sessions`, ejecuta:
+
+```bash
+php artisan migrate
+```
+
+El proyecto incluye migraciones para `sessions`, `cache`, `jobs` y tokens de Sanctum.
+
 ## Modulos incluidos
 
 - Multitenant por `tenant_slug`.
