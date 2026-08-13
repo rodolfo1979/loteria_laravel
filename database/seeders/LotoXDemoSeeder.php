@@ -6,6 +6,9 @@ use App\Enums\UserRole;
 use App\Enums\UserStatus;
 use App\Models\Chat;
 use App\Models\ChatMember;
+use App\Models\Lottery;
+use App\Models\LotteryDraw;
+use App\Models\LotteryResult;
 use App\Models\Message;
 use App\Models\Profile;
 use App\Models\Tenant;
@@ -80,6 +83,31 @@ class LotoXDemoSeeder extends Seeder
                 'message_type' => 'text',
             ]
         );
+
+        $lottery = Lottery::query()->updateOrCreate(
+            ['tenant_id' => $tenant->id, 'code' => 'tica'],
+            ['name' => 'Tica', 'country' => 'CR', 'active' => true, 'sort_order' => 1]
+        );
+
+        $draw = LotteryDraw::query()->updateOrCreate(
+            ['tenant_id' => $tenant->id, 'lottery_id' => $lottery->id, 'name' => 'Tica Noche'],
+            [
+                'draw_time' => '19:00',
+                'timezone' => 'America/Costa_Rica',
+                'days_of_week' => ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'],
+                'status' => 'active',
+                'closes_before_minutes' => 10,
+            ]
+        );
+
+        LotteryResult::query()->updateOrCreate(
+            ['lottery_draw_id' => $draw->id, 'result_date' => now()->toDateString()],
+            [
+                'tenant_id' => $tenant->id,
+                'winning_numbers' => ['95'],
+                'source' => 'demo',
+                'published_at' => now(),
+            ]
+        );
     }
 }
-

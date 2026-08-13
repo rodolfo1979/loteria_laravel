@@ -65,6 +65,13 @@ Enviar mensaje:
 - `POST /admin/library`
 - `GET /admin/announcements`
 - `POST /admin/announcements`
+- `GET /admin/lotteries`
+- `POST /admin/lotteries`
+- `PATCH /admin/lotteries/{lottery}`
+- `DELETE /admin/lotteries/{lottery}`
+- `POST /admin/lotteries/{lottery}/draws`
+- `PATCH /admin/lottery-draws/{draw}`
+- `POST /admin/lottery-draws/{draw}/results`
 
 ## Super Admin
 

@@ -68,6 +68,7 @@ El proyecto incluye migraciones para `sessions`, `cache`, `jobs` y tokens de San
 - Auth base para super admin, admin y cliente.
 - Chats, miembros y mensajes.
 - Anuncios, respuestas rapidas y biblioteca.
+- Administracion de loterias, sorteos, horarios y resultados.
 - Servicio central `TenantCapacityService`.
 - API inicial compatible con `x-lotox-tenant`.
 
