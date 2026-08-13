@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Laravel\Sanctum\HasApiTokens;
 
-class Profile extends Model
+class Profile extends Authenticatable
 {
+    use HasApiTokens;
     use HasUuids;
 
     protected $fillable = [
@@ -35,5 +38,9 @@ class Profile extends Model
     {
         return $this->belongsTo(Tenant::class);
     }
-}
 
+    public function chatMemberships(): HasMany
+    {
+        return $this->hasMany(ChatMember::class);
+    }
+}

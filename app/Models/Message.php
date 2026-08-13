@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Message extends Model
 {
@@ -18,5 +19,14 @@ class Message extends Model
         'attachment_url',
         'attachment_name',
     ];
-}
 
+    public function profile(): BelongsTo
+    {
+        return $this->belongsTo(Profile::class, 'sender_id');
+    }
+
+    public function chat(): BelongsTo
+    {
+        return $this->belongsTo(Chat::class);
+    }
+}

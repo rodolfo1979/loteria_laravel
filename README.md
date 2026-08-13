@@ -28,6 +28,8 @@ Luego copiar estas carpetas dentro del proyecto Laravel real:
 - `routes/`
 - `docs/`
 
+Leer tambien `docs/runtime-integration.md` para registrar middleware, Sanctum y el modelo autenticable.
+
 Variables `.env` principales:
 
 ```env

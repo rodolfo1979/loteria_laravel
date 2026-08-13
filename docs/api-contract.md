@@ -16,15 +16,44 @@ Accept: application/json
 - `POST /auth/login`
 - `POST /auth/register`
 
+Login:
+
+```json
+{
+  "identifier": "cliente@negocio.com",
+  "password": "secret123"
+}
+```
+
+Registro:
+
+```json
+{
+  "fullName": "Cliente Demo",
+  "email": "cliente@negocio.com",
+  "phone": "50660000000",
+  "password": "secret123"
+}
+```
+
 ## App/Admin
 
 - `GET /me`
 - `GET /chats`
 - `POST /chats`
-- `GET /chats/{chat}/messages`
 - `POST /messages`
 - `POST /messages/mark-read`
 - `GET /announcements`
+
+Enviar mensaje:
+
+```json
+{
+  "chatId": "uuid",
+  "body": "Hola",
+  "messageType": "text"
+}
+```
 
 ## Admin tenant
 
@@ -43,4 +72,3 @@ Accept: application/json
 - `POST /super-admin/tenants`
 - `PATCH /super-admin/tenants/{tenant}`
 - `POST /super-admin/tenants/{tenant}/reset-admin-password`
-
