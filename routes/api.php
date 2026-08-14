@@ -60,3 +60,54 @@ Route::prefix('v1')->group(function () {
         });
     });
 });
+
+Route::prefix('v1/lotto')->group(function () {
+    Route::post('/auth/login', [\App\Http\Controllers\AuthController::class, 'login'])->name('lotto.login');
+    Route::get('/auth/session_check', [\App\Http\Controllers\AuthController::class, 'sessionCheck']);
+    Route::post('/personas/cliente_store', [\App\Http\Controllers\PersonaController::class, 'clienteStore']);
+
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::get('/ventas', [\App\Http\Controllers\VentaController::class, 'index']);
+        Route::get('/ventas/filters', [\App\Http\Controllers\VentaController::class, 'filters']);
+        Route::get('/ventas/print', [\App\Http\Controllers\VentaController::class, 'print']);
+        Route::get('/ventas/create', [\App\Http\Controllers\VentaController::class, 'create']);
+        Route::post('/ventas/save', [\App\Http\Controllers\VentaController::class, 'save']);
+        Route::get('/ventas/edit', [\App\Http\Controllers\VentaController::class, 'edit']);
+
+        Route::get('/agencias', [\App\Http\Controllers\AgenciaController::class, 'index']);
+        Route::get('/agencias/create', [\App\Http\Controllers\AgenciaController::class, 'create']);
+        Route::post('/agencias/save', [\App\Http\Controllers\AgenciaController::class, 'save']);
+        Route::get('/agencias/edit', [\App\Http\Controllers\AgenciaController::class, 'edit']);
+
+        Route::get('/roles_paginas_acciones', [\App\Http\Controllers\RolPaginaAccionController::class, 'index']);
+        Route::get('/roles_paginas_acciones/create', [\App\Http\Controllers\RolPaginaAccionController::class, 'create']);
+        Route::post('/roles_paginas_acciones/save', [\App\Http\Controllers\RolPaginaAccionController::class, 'save']);
+
+        Route::get('/permisos/menu', [\App\Http\Controllers\PermisoController::class, 'menu']);
+        Route::get('/permisos/check', [\App\Http\Controllers\PermisoController::class, 'check']);
+        Route::get('/permisos/childrens', [\App\Http\Controllers\PermisoController::class, 'getChildrens']);
+
+        Route::post('/auth/logout', [\App\Http\Controllers\AuthController::class, 'logout']);
+
+        Route::get('/personas', [\App\Http\Controllers\PersonaController::class, 'index']);
+        Route::get('/personas/info', [\App\Http\Controllers\PersonaController::class, 'info']);
+        Route::get('/personas/create', [\App\Http\Controllers\PersonaController::class, 'create']);
+        Route::post('/personas/save', [\App\Http\Controllers\PersonaController::class, 'save']);
+        Route::get('/personas/edit', [\App\Http\Controllers\PersonaController::class, 'edit']);
+
+        Route::get('/usuarios/accesos', [\App\Http\Controllers\UsuarioController::class, 'accesos']);
+        Route::post('/usuarios/save', [\App\Http\Controllers\UsuarioController::class, 'save']);
+
+        Route::get('/loterias', [\App\Http\Controllers\LoteriaController::class, 'index']);
+        Route::post('/loterias/save', [\App\Http\Controllers\LoteriaController::class, 'save']);
+        Route::get('/loterias/edit', [\App\Http\Controllers\LoteriaController::class, 'edit']);
+
+        Route::get('/juegos', [\App\Http\Controllers\JuegoController::class, 'index']);
+        Route::get('/juegos/filters', [\App\Http\Controllers\JuegoController::class, 'filters']);
+        Route::get('/juegos/create', [\App\Http\Controllers\JuegoController::class, 'create']);
+        Route::post('/juegos/save', [\App\Http\Controllers\JuegoController::class, 'save']);
+        Route::get('/juegos/edit', [\App\Http\Controllers\JuegoController::class, 'edit']);
+
+        Route::get('/reportes/juegos/proximos_sorteos', [\App\Http\Controllers\ReporteJuegoController::class, 'proximosSorteos']);
+    });
+});

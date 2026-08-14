@@ -1,0 +1,32 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('juegos_dias', function (Blueprint $table) {
+            $table->increments("juego_dia_id");
+            $table->unsignedInteger("juego_id")->index();
+            $table->foreign("juego_id")->references("juego_id")->on("juegos")->onDelete("no action")->onUpdate("cascade");
+            $table->smallInteger("dia");
+            $table->estadosAuditoria();
+            $table->usuariosAuditoria();
+            $table->fechasAuditoria();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('juegos_dias');
+    }
+};

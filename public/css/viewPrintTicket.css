@@ -1,0 +1,166 @@
+/*RESETS*/
+
+* {
+    padding: 0mm;
+    margin: 0mm;
+}
+
+body {
+    font-family: "ticketing";
+    font-size: 10.5pt;
+}
+
+p {
+    text-align: justify;
+    margin-bottom: 0mm;
+    margin-top: 0mm;
+}
+
+table {
+    margin: 1mm 0;
+    border-collapse: collapse;
+    width: 100%;
+    border-spacing: 0;
+    text-align: left;
+    font-weight: lighter;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    text-align: left;
+    page-break-after: avoid;
+    color: #101010;
+}
+
+thead {
+    font-weight: bold;
+    vertical-align: bottom;
+}
+
+tfoot {
+    font-weight: bold;
+    vertical-align: top;
+}
+
+th {
+    font-weight: bold;
+}
+
+td {
+    font-weight: lighter;
+}
+
+td, th {
+    vertical-align: top;
+    margin: 0mm;
+    padding: 0mm;
+    text-align: left;
+}
+
+
+
+th p, td p {
+    margin: 0mm
+}
+
+table.border td, table.border th {
+    border: 1px dotted #101010;
+}
+
+hr {
+    width: 70%;
+    height: 1px;
+    text-align: center;
+    color: #999999;
+    margin-top: 5mm;
+    margin-bottom: 5mm;
+}
+
+a {
+    color: #000066;
+    font-style: normal;
+    text-decoration: underline;
+    font-weight: normal;
+}
+
+h1 {
+    font-size: 22pt;
+    margin-top: 6pt;
+    margin-bottom: 6pt;
+}
+
+h2 {
+    font-size: 20pt;
+    margin-top: 5pt;
+    margin-bottom: 5pt;
+}
+
+h3 {
+    font-size: 18pt;
+    margin-top: 5pt;
+    margin-bottom: 5pt;
+}
+
+h4 {
+    font-size: 16pt;
+    margin-top: 4pt;
+    margin-bottom: 4pt;
+}
+
+h5 {
+    font-size: 14pt;
+    margin-top: 3pt;
+    margin-bottom: 3pt;
+}
+
+h6 {
+    font-size: 12pt;
+    margin-top: 2pt;
+    margin-bottom: 2pt;
+}
+
+/* CLASESS*/
+.border_bottom {
+    border-bottom: 1px dotted #101010
+}
+
+.border_top {
+    border-top: 1px dotted #101010
+}
+
+.border {
+    border: 1px solid #101010
+}
+
+.text_center {
+    text-align: center;
+}
+
+.text_left {
+    text-align: left;
+}
+
+.text_right {
+    text-align: right;
+}
+
+/* CUSTOM SIZE*/
+.font9 {
+    font-size: 9pt;
+}
+
+.font10 {
+    font-size: 10pt;
+}
+
+.font11 {
+    font-size: 11pt;
+}
+
+.font12 {
+    font-size: 12pt;
+}
+
+.font13 {
+    font-size: 13pt;
+}
