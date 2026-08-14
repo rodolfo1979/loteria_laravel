@@ -1,0 +1,20 @@
+// ❗ Path must be relative
+@forward "../@core/template/libs/vuetify/variables";
+
+// ℹ️ Remove above import and uncomment below to override core variables.
+// @forward "../@core/template/libs/vuetify/variables" with (
+//   $<variable-name>: <variable-value>
+// )
+
+@font-face {
+    font-family: 'Digital7';
+    src: url('@/fonts/Digital7.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Suse';
+    src: url('@/fonts/SUSE.ttf') format('truetype');
+}
+
+
+$font-family-custom: 'Digital7';

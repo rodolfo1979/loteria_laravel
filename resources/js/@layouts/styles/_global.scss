@@ -1,0 +1,25 @@
+*,
+::before,
+::after {
+  box-sizing: inherit;
+  background-repeat: no-repeat;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+/* RESETS */
+.nav-group-label,  .layout-nav-type-vertical .layout-vertical-nav .nav-link > :first-child {
+    margin-inline: 0 !important;
+}
+
+.app-logo {
+    .app-logo-title {
+        text-transform: none !important;
+    }
+}
+
+.layout-nav-type-vertical .layout-vertical-nav .nav-header {
+    padding: 1rem !important;
+}

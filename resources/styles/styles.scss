@@ -1,0 +1,10 @@
+// Write your CUSTOM CLASS
+
+.v-label.v-field-label--floating {
+    --v-field-label-scale: 0.95em !important;
+    font-size: var(--v-field-label-scale);
+}
+
+.v-field--appended {
+    padding-inline-end: 0px !important;
+}

@@ -1,0 +1,51 @@
+// These are styles which are both common in layout w/ vertical nav & horizontal nav
+@use "@layouts/styles/placeholders";
+@use "@layouts/styles/mixins";
+@use "@configured-variables" as variables;
+
+html,
+body {
+    min-block-size: 100%;
+}
+
+.v-breadcrumbs {
+    letter-spacing: 0.12px !important;
+    font-weight: bold !important;
+
+    .v-breadcrumbs-item--disabled {
+        color: blue !important;
+        font-size: 100% !important;
+        opacity: 0.9 !important;
+        border-bottom: 1px  blue;
+        &::after {
+            content: "\2713";
+            font-size: 1rem;
+            margin-left: 5px;
+            font-weight: bold;
+        }
+    }
+
+}
+
+.layout-page-content {
+    @include mixins.boxed-content(true);
+
+    flex-grow: 1;
+    padding-block: 5px;
+}
+
+.layout-footer {
+    .footer-content-container {
+        block-size: variables.$layout-vertical-nav-footer-height;
+    }
+
+    .layout-footer-sticky & {
+        position: sticky;
+        inset-block-end: 0;
+        will-change: transform;
+    }
+
+    .layout-footer-hidden & {
+        display: none;
+    }
+}
